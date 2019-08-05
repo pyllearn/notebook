@@ -50,6 +50,7 @@ On ICP dashboard, go to User icon on the top right corner on ui, and click **Con
 
 Execute the commands in command line window.
 
+Refer to [this](https://developer.ibm.com/tutorials/accessing-dockerhub-repos-in-iks/#access-dockerhub-repositories-from-the-ibm-cloud-kubernetes-service) tutorial to understancd how to configure remote repository for ICP
 #### Run the image in icp environment
 > kubectl run gssc-website --image=vmwareregion312.icp:8500/uxl/gssc-website --port=80 --env="DOMAIN=cluster"
 > kubectl expose deployment gssc-website --type="LoadBalancer" 
