@@ -1,3 +1,8 @@
+Notebook
+============
+This repository is created to host a notebook for some studies.
+The theme is from Jekyll Clean.
+
 Jekyll Clean
 ============
 
