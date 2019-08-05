@@ -46,15 +46,21 @@ Push the image to server
 
 #### Set the environment variable 
 On ICP dashboard, go to User icon on the top right corner on ui, and click **Configure client**
+
 <img src="./images/config.png">
 
 Execute the commands in command line window.
 
 Refer to [this](https://developer.ibm.com/tutorials/accessing-dockerhub-repos-in-iks/#access-dockerhub-repositories-from-the-ibm-cloud-kubernetes-service) tutorial to understancd how to configure remote repository for ICP
 #### Run the image in icp environment
+Start an instance of website
 > kubectl run gssc-website --image=vmwareregion312.icp:8500/uxl/gssc-website --port=80 --env="DOMAIN=cluster"
+
+Expose the port for user to access
+
 > kubectl expose deployment gssc-website --type="LoadBalancer" 
 
+<img src="./images/exposeService.png">
 
 #### Verify the deployment by accessing host ip with the port
 https://<%host ip%>:<%port%>
