@@ -12,7 +12,7 @@ To practice how to deploy existing internal projects to containerlize environmen
 
 Here is the first POC to deploy a static website hosted on nginx web site.
 
-####Package the website
+#### Package the website
 dockerfile
 ```
 FROM nginx
@@ -22,7 +22,7 @@ And then run the commands to build the image.
 > docker build -t gssc-website .
 > docker run --name testwebsite -p 83:80 -d gssc-website
 
-####Upload the image to icp
+#### Upload the image to icp
 Login to icp registry using docker command
 
 > vim /etc/hosts
@@ -34,17 +34,17 @@ Tag and push the image
 >  docker tag  gssc-website vmwareregion312.icp:8500/uxl/gssc-website
 >  docker push vmwareregion312.icp:8500/uxl/gssc-website
 
-####Set the environment variable 
+#### Set the environment variable 
 On ICP dashboard, go to User icon on the top right corner on ui, and click **Configure client**
-<img src="../images/config.png">
+<img src="./images/config.png">
 
 Execute the commands in command line window.
 
-####Run the image in icp environment
+#### Run the image in icp environment
 > kubectl run gssc-website --image=vmwareregion312.icp:8500/uxl/gssc-website --port=80 --env="DOMAIN=cluster"
 > kubectl expose deployment gssc-website --type="LoadBalancer" 
 
 
-####Verify the deployment by accessing host ip with the port
+#### Verify the deployment by accessing host ip with the port
 https://<%host ip%>:<%port%>
 
