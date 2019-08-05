@@ -8,3 +8,40 @@ comments: true
 
 How to deploy container image to ICP (IBM Cloud private)
 ============
+To practice how to deploy existing internal projects to containerlize environment, here are some records to do that.
+
+Here is the first POC to deploy a static website hosted on nginx web site.
+1. Package the website
+
+dockerfile
+'''
+FROM nginx
+COPY ./dist /usr/share/nginx/html
+'''
+
+And then run the commands to build the image.
+> docker build -t gssc-website .
+> docker run --name testwebsite -p 83:80 -d gssc-website
+
+2. Upload the image to icp
+Login to icp registry using docker command
+
+> vim /etc/hosts
+> <%ip address%> vmwareregion312.icp
+> docker login -u '<%xxxx@xx.xxx.com%>' -p '<%password%>' vmwareregion312.icp:8500 
+
+Tag and push the image
+
+>  docker tag  gssc-website vmwareregion312.icp:8500/uxl/gssc-website
+>  docker push vmwareregion312.icp:8500/uxl/gssc-website
+
+3. Set the environment variable 
+
+4. Run the image in icp environment
+
+> kubectl run gssc-website --image=vmwareregion312.icp:8500/uxl/gssc-website --port=80 --env="DOMAIN=cluster"
+> kubectl expose deployment gssc-website --type="LoadBalancer" 
+
+
+5. Verify the deployment by accessing host ip with the port
+https://<%host ip%>:<%port%>
