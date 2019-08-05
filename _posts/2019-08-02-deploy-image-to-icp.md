@@ -60,8 +60,10 @@ Expose the port for user to access
 
 > kubectl expose deployment gssc-website --type="LoadBalancer" 
 
+Get service details to find the exposed port.
 <img src="./images/exposeService.png">
 
+Refer this [tutorial](https://kubernetes.io/docs/tutorials/stateless-application/expose-external-ip-address/) to start instances and expose port to access.
 #### Verify the deployment by accessing host ip with the port
 https://<%host ip%>:<%port%>
 
