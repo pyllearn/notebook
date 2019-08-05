@@ -42,6 +42,10 @@ body {
     font-size: 1.3em;
 }
 
+.well p {
+    font-size: 0.8em;
+}
+
 .author {
     color: #ee4444;
 }

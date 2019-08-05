@@ -19,19 +19,29 @@ FROM nginx
 COPY ./dist /usr/share/nginx/html
 ```
 And then run the commands to build the image.
+
 > docker build -t gssc-website .
+
+Try to start an instance in local
+
 > docker run --name testwebsite -p 83:80 -d gssc-website
 
 #### Upload the image to icp
-Login to icp registry using docker command
+Add ICP host in local routing table.
 
 > vim /etc/hosts
-> <%ip address%> vmwareregion312.icp
+
+Add the line below
+```
+<%ip address%> vmwareregion312.icp
+```
+Login to icp registry using docker command
 > docker login -u '<%xxxx@xx.xxx.com%>' -p '<%password%>' vmwareregion312.icp:8500 
 
-Tag and push the image
-
+Tag the image
 >  docker tag  gssc-website vmwareregion312.icp:8500/uxl/gssc-website
+
+Push the image to server
 >  docker push vmwareregion312.icp:8500/uxl/gssc-website
 
 #### Set the environment variable 
