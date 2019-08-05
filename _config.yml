@@ -1,7 +1,7 @@
 # Jekyll configuration
 
 name: My blog
-description: A jekyll theme
+description: A Notebook
 
 # url is currently only used only for the RSS feed in feed.xml
 url: https://pyllearn.github.io/notebook/
